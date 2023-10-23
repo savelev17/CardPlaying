@@ -1,0 +1,5 @@
+﻿  CardPlay.cpp
+E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(49,21): warning C4091: : пропускается слева от "std::array<Card,52>", когда ни одна переменная не объявлена
+E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(66,11): warning C4101: value: неиспользованная локальная переменная
+E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(67,10): warning C4101: suit: неиспользованная локальная переменная
+  CardPlay.vcxproj -> E:\!GIT\TEST_6 ex6\x64\Debug\CardPlay.exe
