@@ -8,7 +8,7 @@ const int quantity_Sqwads = 13;
 
 const int sqwads = 4;
 
-enum Value
+enum CardRank
 {
     ONE,
     RWO,
@@ -28,7 +28,7 @@ enum Value
     COUNT_ENUM_VALUE
 };
 
-enum Suit
+enum CardSuit
 {
     BUBI,
     CHERVI,
@@ -40,16 +40,26 @@ enum Suit
 
 struct Card
 {
-    Value value;
-    Suit suit;
+    CardRank value;
+    CardSuit suit;
 };
 
 void Print(const Card& pointer);
 
-std::array<Card, 52>;
 
 int main()
 {
+    std::array<Card, 52> deck;
+
+    int card = 0;
+
+    for (int i = 0; i < COUNT_SUITS; i++)
+    {
+        for (int j = 0; j < COUNT_ENUM_VALUE; j++)
+        {
+            deck[card].suit = static_cast<Card>(j);
+        }
+    }
 
     std::cout << "Hello World!\n";
 }
@@ -60,17 +70,3 @@ void Print(const Card& pointer)
     std::cout << "Достоинство " << pointer.value << std::endl;
 }
 
-void Fill_Array(const std::array<Card, quantity_Cards>& array_p)
-{
-    int counter = 0;
-    Value value;
-    Suit suit;
-
-    for (int i = 0; i < quantity_Sqwads; i++)
-    {
-        for (int j = 0; j < sqwads; j++)
-        {
-            
-        }
-    }
-}
