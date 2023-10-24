@@ -49,15 +49,18 @@ void Print(const Card& pointer);
 
 int main()
 {
+    Card temp{};
     std::array<Card, 52> deck;
 
     int card = 0;
 
-    for (int i = 0; i < COUNT_SUITS; i++)
+    for (int i = 0; i < CardSuit::COUNT_SUITS; i++)
     {
-        for (int j = 0; j < COUNT_ENUM_VALUE; j++)
+        for (int j = 0; j < CardRank::COUNT_ENUM_VALUE; j++)
         {
-            deck[card].suit = static_cast<Card>(j);
+            temp.suit = static_cast<CardSuit>(j);
+            temp.value = static_cast<CardRank>(j);
+            deck[card++] = temp;
         }
     }
 

@@ -1,3 +1,3 @@
 ﻿  CardPlay.cpp
-E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(49,22): error C2079: "deck" использует не имеющую определения структуру class "std::array<Card,52>"
-E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(73,28): error C2676: бинарный "[": "const std::array<Card,52>" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
+E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(52,27): warning C4101: deck: неиспользованная локальная переменная
+  CardPlay.vcxproj -> E:\!GIT\TEST_6 ex6\x64\Debug\CardPlay.exe
