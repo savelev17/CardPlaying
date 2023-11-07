@@ -9,6 +9,8 @@ const int quantity_Sqwads = 13;
 
 const int sqwads = 4;
 
+
+
 enum CardRank
 {
     TWO,
@@ -45,7 +47,7 @@ struct Card
 };
 
 void Print(const Card& pointer);
-
+void PrintDeck(const std::array <Card, 52>& pDeck);
 
 int main()
 {
@@ -59,11 +61,13 @@ int main()
     {
         for (int j = 0; j < CardRank::COUNT_ENUM_VALUE; j++)
         {
-            temp.suit = static_cast<CardSuit>(j);
+            temp.suit = static_cast<CardSuit>(i);
             temp.value = static_cast<CardRank>(j);
             deck[card++] = temp;
         }
     }
+
+    PrintDeck(deck);
 
     std::cout << "Hello World!\n";
 }
@@ -96,3 +100,10 @@ void Print(const Card& pointer)
     }
 }
 
+void PrintDeck(const std::array <Card, 52>& pDeck)
+{
+    for (const auto &element : pDeck)
+    {
+        std::cout << "Suit - " << static_cast<CardSuit>(element.suit) << " Value - " << static_cast<CardRank>(element.value) << std::endl;
+    }
+}
