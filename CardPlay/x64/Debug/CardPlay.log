@@ -1,3 +1,2 @@
 ﻿  CardPlay.cpp
-E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(52,27): warning C4101: deck: неиспользованная локальная переменная
   CardPlay.vcxproj -> E:\!GIT\TEST_6 ex6\x64\Debug\CardPlay.exe

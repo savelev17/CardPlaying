@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <array>
 const int quantity_Cards = 52;//52/4 = 13
 
 const int quantity_Sqwads = 13;
@@ -10,8 +11,7 @@ const int sqwads = 4;
 
 enum CardRank
 {
-    ONE,
-    RWO,
+    TWO,
     THREE,
     FOUR,
     FIVE,
@@ -52,6 +52,7 @@ int main()
     Card temp{};
     std::array<Card, 52> deck;
 
+
     int card = 0;
 
     for (int i = 0; i < CardSuit::COUNT_SUITS; i++)
@@ -69,7 +70,29 @@ int main()
 
 void Print(const Card& pointer)
 {
-    std::cout << "Масть " << pointer.suit << std::endl;
-    std::cout << "Достоинство " << pointer.value << std::endl;
+    switch (pointer.value)
+    {
+    case TWO:		std::cout << "2"; break;
+    case THREE:		std::cout << "3"; break;
+    case FOUR:		std::cout << "4"; break;
+    case FIVE:		std::cout << "5"; break;
+    case SIX:		std::cout << "6"; break;
+    case SEVEN:		std::cout << "7"; break;
+    case EIGHT:		std::cout << "8"; break;
+    case NINE:		std::cout << "9"; break;
+    case TEN:		std::cout << "T"; break;
+    case VALET:	std::cout << "V"; break;
+    case DAMA:	        std::cout << "D"; break;
+    case KOROL:	std::cout << "K"; break;
+    case TUZ:		std::cout << "T"; break;
+    }
+
+    switch (pointer.suit)
+    {
+    case KRESTI:	std::cout << "TR"; break;
+    case BUBI:	std::cout << "B"; break;
+    case CHERVI:	std::cout << "CH"; break;
+    case VINI:	        std::cout << "P"; break;
+    }
 }
 
