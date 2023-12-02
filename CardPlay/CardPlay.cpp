@@ -107,3 +107,14 @@ void PrintDeck(const std::array <Card, 52>& pDeck)
         std::cout << "Suit - " << static_cast<CardSuit>(element.suit) << " Value - " << static_cast<CardRank>(element.value) << std::endl;
     }
 }
+
+void SwapCard(const std::array <Card, 52>& pDeck, int index1, int index2)
+{
+    Card temp{};
+
+    temp = pDeck.at(index1);
+
+    pDeck.at(index1) = pDeck.at(index2);
+
+
+}
