@@ -53,18 +53,21 @@ void SwapCard(Card& a, Card& b);
 int  getRandomNumber(int min, int max);
 void shuffleDeck(std::array <Card, 52>& pDeck);
 void FillDeck(std::array <Card, 52>& pDeck);
-int  getCardValue(std::array <Card, 52>& pDeck, int index);
+int getCardValue(int index);
+int Playing(std::array <Card, 52>& pDeck);
 
 int main()
 {
+    setlocale(LC_ALL, "rus");
     srand(static_cast<unsigned int>(time(0)));
     std::array<Card, 52> deck;
 
     FillDeck(deck);
-    PrintDeck(deck);
-    shuffleDeck(deck);
-    std::cout << "\nCards shuffled!\n\n";
-    PrintDeck(deck);
+    //PrintDeck(deck);
+    //shuffleDeck(deck);
+    //std::cout << "\nCards shuffled!\n\n";
+    //PrintDeck(deck);
+    Playing(deck);
     
 }
 
@@ -147,13 +150,9 @@ void shuffleDeck(std::array <Card, 52>& pDeck)
     }
 }
 
-int getCardValue(std::array <Card, 52>& pDeck, int index)
-{
-    Card temp;
-
-    temp = pDeck.at(index);
-
-    switch (temp.value)
+int getCardValue(int index)
+{    
+    switch (index)
     {
     case 0: return 2;
     case 1: return 3;
@@ -179,12 +178,13 @@ int getCardValue(std::array <Card, 52>& pDeck, int index)
 
 int Playing(std::array <Card, 52>& pDeck)
 {
-    Card* cardPtr;
-    int player_res;
+    Card* cardPtr = nullptr;
+    int player_res = 0;
     int dialog_per;
 
     while (player_res < 21)
     {
+        std::cout << "Твои очки: " << player_res << std::endl;
         std::cout << "Берешь карту? 1 - да, 0 - нет" << std::endl;
         std::cin >> dialog_per;
         
@@ -193,13 +193,22 @@ int Playing(std::array <Card, 52>& pDeck)
             shuffleDeck(pDeck);
             int rand_index = getRandomNumber(0, 51);
             rand_index = getRandomNumber(0, 51);
-            player_res = getCardValue
+            cardPtr = &pDeck.at(rand_index);
+            player_res += getCardValue(cardPtr->value);
+            if (player_res >= 21)
+            {
+                std::cout << "Ты проиграл: " << std::endl;
+                return 0;
+            }
+                
         }
         if (dialog_per == 0)
             return 0;
     }
+    
 
-    delete cardPtr;
+    if(cardPtr != nullptr)
+        delete cardPtr;
     cardPtr = 0;
     return -1;//fail
 }

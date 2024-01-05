@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+.vs/CardPlay/FileContentIndex/1a0131f1-dcae-4452-a898-00c6a42c8b73.vsidx
+*.vsidx
+*.db-shm
+*.db-wal
+*.sqlite
+.vs/TEST_6 ex6/v17/.wsuo
+.vs/TEST_6 ex6/v17/Browse.VC.db
+.vs/CardPlay/v17/Browse.VC.opendb
+.vs/CardPlay/v17/.suo
+.vs/CardPlay/v17/Browse.VC.db
+*.sqlite
+.vs/TEST_6 ex6/v17/.wsuo
