@@ -3,13 +3,14 @@
 
 #include <iostream>
 #include <array>
+#include <cstdlib> // для функций rand() и srand()
+#include <ctime> // для функции time()
+
 const int quantity_Cards = 52;//52/4 = 13
 
 const int quantity_Sqwads = 13;
 
 const int sqwads = 4;
-
-
 
 enum CardRank
 {
@@ -48,12 +49,28 @@ struct Card
 
 void Print(const Card& pointer);
 void PrintDeck(const std::array <Card, 52>& pDeck);
+void SwapCard(Card& a, Card& b);
+int  getRandomNumber(int min, int max);
+void shuffleDeck(std::array <Card, 52>& pDeck);
+void FillDeck(std::array <Card, 52>& pDeck);
+int  getCardValue(std::array <Card, 52>& pDeck, int index);
 
 int main()
 {
-    Card temp{};
+    srand(static_cast<unsigned int>(time(0)));
     std::array<Card, 52> deck;
 
+    FillDeck(deck);
+    PrintDeck(deck);
+    shuffleDeck(deck);
+    std::cout << "\nCards shuffled!\n\n";
+    PrintDeck(deck);
+    int card_value = getCardValue(deck, 2);
+}
+
+void FillDeck(std::array <Card, 52>& pDeck)
+{
+    Card temp{};
 
     int card = 0;
 
@@ -63,13 +80,9 @@ int main()
         {
             temp.suit = static_cast<CardSuit>(i);
             temp.value = static_cast<CardRank>(j);
-            deck[card++] = temp;
+            pDeck[card++] = temp;
         }
     }
-
-    PrintDeck(deck);
-
-    std::cout << "Hello World!\n";
 }
 
 void Print(const Card& pointer)
@@ -85,18 +98,18 @@ void Print(const Card& pointer)
     case EIGHT:		std::cout << "8"; break;
     case NINE:		std::cout << "9"; break;
     case TEN:		std::cout << "T"; break;
-    case VALET:	std::cout << "V"; break;
-    case DAMA:	        std::cout << "D"; break;
-    case KOROL:	std::cout << "K"; break;
+    case VALET:	    std::cout << "V"; break;
+    case DAMA:	    std::cout << "D"; break;
+    case KOROL:	    std::cout << "K"; break;
     case TUZ:		std::cout << "T"; break;
     }
 
     switch (pointer.suit)
     {
     case KRESTI:	std::cout << "TR"; break;
-    case BUBI:	std::cout << "B"; break;
+    case BUBI:	    std::cout << "B"; break;
     case CHERVI:	std::cout << "CH"; break;
-    case VINI:	        std::cout << "P"; break;
+    case VINI:	    std::cout << "P"; break;
     }
 }
 
@@ -108,13 +121,58 @@ void PrintDeck(const std::array <Card, 52>& pDeck)
     }
 }
 
-void SwapCard(const std::array <Card, 52>& pDeck, int index1, int index2)
+void SwapCard(Card &a, Card &b)
 {
-    Card temp{};
+    Card temp = a;
+    a = b;
+    b = temp;
+}
 
-    temp = pDeck.at(index1);
+int getRandomNumber(int min, int max)
+{
+    const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
+    // Равномерно распределяем рандомное число в нашем диапазоне
+    return static_cast<int>(rand() * fraction * (max - min + 1) + min);
+}
 
-    pDeck.at(index1) = pDeck.at(index2);
+void shuffleDeck(std::array <Card, 52>& pDeck)
+{
+    for (int i = 0; i < quantity_Cards; i++)
+    {
+        int res = getRandomNumber(1, 10);
 
+        res = getRandomNumber(0, 51);
 
+        SwapCard(pDeck.at(i), pDeck.at(res));
+    }
+}
+
+int getCardValue(std::array <Card, 52>& pDeck, int index)
+{
+    Card temp;
+
+    temp = pDeck.at(index);
+
+    switch (temp.value)
+    {
+    case 0: return 2;
+    case 1: return 3;
+    case 2: return 4;
+    case 3: return 5;
+    case 4: return 6;
+    case 5: return 7;
+    case 6: return 8;
+    case 7: return 9;
+    case 8: return 10;
+    case 9: return 10;//VAL
+    case 10:return 10;//DAMA
+    case 11:return 10;//KOROL
+    case 12:return 11;//TUZ
+    
+    default:
+        break;
+    }
+        
+    
+    return 0;
 }

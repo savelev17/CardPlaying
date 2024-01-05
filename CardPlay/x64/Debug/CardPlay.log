@@ -1,13 +1,2 @@
 ﻿  CardPlay.cpp
-E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(117,13): error C2678: бинарный "=": не найден оператор, принимающий левый операнд типа "const _Ty" (или приемлемое преобразование отсутствует)
-          with
-          [
-              _Ty=Card
-          ]
-E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(47,1): message : может быть "Card &Card::operator =(Card &&)"
-E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(47,1): message : или       "Card &Card::operator =(const Card &)"
-E:\!GIT\TEST_6 ex6\CardPlay\CardPlay.cpp(117,13): message : при попытке сопоставить список аргументов "(const _Ty, const _Ty)"
-          with
-          [
-              _Ty=Card
-          ]
+  CardPlay.vcxproj -> E:\!GIT\TEST_6 ex6\x64\Debug\CardPlay.exe
