@@ -65,7 +65,7 @@ int main()
     shuffleDeck(deck);
     std::cout << "\nCards shuffled!\n\n";
     PrintDeck(deck);
-    int card_value = getCardValue(deck, 2);
+    
 }
 
 void FillDeck(std::array <Card, 52>& pDeck)
@@ -175,4 +175,31 @@ int getCardValue(std::array <Card, 52>& pDeck, int index)
         
     
     return 0;
+}
+
+int Playing(std::array <Card, 52>& pDeck)
+{
+    Card* cardPtr;
+    int player_res;
+    int dialog_per;
+
+    while (player_res < 21)
+    {
+        std::cout << "Берешь карту? 1 - да, 0 - нет" << std::endl;
+        std::cin >> dialog_per;
+        
+        if (dialog_per == 1)
+        {
+            shuffleDeck(pDeck);
+            int rand_index = getRandomNumber(0, 51);
+            rand_index = getRandomNumber(0, 51);
+            player_res = getCardValue
+        }
+        if (dialog_per == 0)
+            return 0;
+    }
+
+    delete cardPtr;
+    cardPtr = 0;
+    return -1;//fail
 }
